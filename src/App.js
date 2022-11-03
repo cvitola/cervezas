@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Panel from './components/Panel';
+import Carro from './components/Carro';
+import { Container, Row, Col } from 'react-bootstrap';
 
 function App() {
+
+const [carrito, setCarrito] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Container className="fondo">
+        <Row>
+          <Col>
+            <Panel 
+              carrito={carrito} 
+              setCarrito={setCarrito}
+            />
+          </Col>
+          <Col>
+            <Carro 
+              carrito={carrito} 
+              setCarrito={setCarrito}
+            />
+          </Col>
+        </Row>
+      </Container>
+      
+
+      <Footer />
     </div>
   );
 }
